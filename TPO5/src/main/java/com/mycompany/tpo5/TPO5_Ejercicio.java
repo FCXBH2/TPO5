@@ -9,6 +9,7 @@ import Clases_De_Uso.Electrodomestico;
 import Clases_De_Uso.Ropa;
 import Clases_De_Uso.Super_Clase;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author DANIELALEJANDROMIRAN
@@ -16,12 +17,15 @@ import java.util.ArrayList;
 //Nombre: Daniel Miranda Alejandro - DNI: 45800784.
 public class TPO5_Ejercicio extends javax.swing.JFrame {
     ArrayList<Super_Clase> Prod = new ArrayList();
+    DefaultTableModel Prueba = new DefaultTableModel();
     /**
      * Creates new form TPO5_Ejercicio
      */
     public TPO5_Ejercicio() {
         initComponents();
-        
+        String[] cl = {"Producto","Categoria","Precio"};
+        Prueba.setColumnIdentifiers(cl);
+        Productos.setModel(Prueba);
     }
 
     /**
@@ -38,6 +42,7 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Productos = new javax.swing.JTable();
         Evento = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SuperMayorista");
@@ -50,15 +55,9 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
         PE.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
         PE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentos", "Electrodomesticos", "Ropa" }));
 
-        Productos.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        Productos.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         Productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -101,6 +100,9 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        jButton1.setText("Remover");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -108,6 +110,7 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
             .addComponent(PE, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .addComponent(Evento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +119,9 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Evento, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,7 +143,9 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
         String Valor=(String)PE.getSelectedItem();
         switch(Valor){
             case ("Electrodomesticos"):
-                Electrodomestico electro = new Electrodomestico("","Electrodomestico",0.0);
+                
+                Prueba.addRow(new Object[]{"","Electrodomestico",0.0});
+                
                 break;
             case ("Alimentos"):
                 Alimentos ali = new Alimentos("","Alimento",0.0);
@@ -188,6 +195,7 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     private javax.swing.JButton Evento;
     private javax.swing.JComboBox<String> PE;
     private javax.swing.JTable Productos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
