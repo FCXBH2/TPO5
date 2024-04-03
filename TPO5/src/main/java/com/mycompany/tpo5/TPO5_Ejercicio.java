@@ -4,17 +4,20 @@
  */
 package com.mycompany.tpo5;
 
+import java.util.ArrayList;
 /**
  *
  * @author DANIELALEJANDROMIRAN
  */
+//Nombre: Daniel Miranda Alejandro - DNI: 45800784.
 public class TPO5_Ejercicio extends javax.swing.JFrame {
-
+    ArrayList<Super_Clase> Prod = new ArrayList();
     /**
      * Creates new form TPO5_Ejercicio
      */
     public TPO5_Ejercicio() {
         initComponents();
+        
     }
 
     /**
@@ -26,21 +29,110 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        PE = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Productos = new javax.swing.JTable();
+        Evento = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("SuperMayorista");
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(0, 140, 22));
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
+
+        PE.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        PE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentos", "Electrodomesticos", "Ropa" }));
+
+        Productos.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        Productos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Producto", "Categoria", "Precio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Productos.setShowGrid(true);
+        Productos.setShowHorizontalLines(true);
+        Productos.setShowVerticalLines(true);
+        jScrollPane1.setViewportView(Productos);
+        if (Productos.getColumnModel().getColumnCount() > 0) {
+            Productos.getColumnModel().getColumn(0).setResizable(false);
+            Productos.getColumnModel().getColumn(1).setResizable(false);
+            Productos.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        Evento.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        Evento.setText("Agregar Producto");
+        Evento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EventoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PE, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(Evento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(PE, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Evento, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void EventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EventoMouseClicked
+        
+    }//GEN-LAST:event_EventoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +170,10 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Evento;
+    private javax.swing.JComboBox<String> PE;
+    private javax.swing.JTable Productos;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
