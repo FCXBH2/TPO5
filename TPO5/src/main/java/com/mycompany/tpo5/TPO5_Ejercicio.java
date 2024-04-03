@@ -4,6 +4,10 @@
  */
 package com.mycompany.tpo5;
 
+import Clases_De_Uso.Alimentos;
+import Clases_De_Uso.Electrodomestico;
+import Clases_De_Uso.Ropa;
+import Clases_De_Uso.Super_Clase;
 import java.util.ArrayList;
 /**
  *
@@ -131,7 +135,18 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EventoMouseClicked
-        
+        String Valor=(String)PE.getSelectedItem();
+        switch(Valor){
+            case ("Electrodomesticos"):
+                Electrodomestico electro = new Electrodomestico("","Electrodomestico",0.0);
+                break;
+            case ("Alimentos"):
+                Alimentos ali = new Alimentos("","Alimento",0.0);
+                break;
+            case ("Ropa"):
+                Ropa ropa = new Ropa("","Ropa",0.0);
+                break;
+        }
     }//GEN-LAST:event_EventoMouseClicked
 
     /**
