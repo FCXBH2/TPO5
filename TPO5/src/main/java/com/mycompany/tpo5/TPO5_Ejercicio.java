@@ -8,7 +8,12 @@ import Clases_De_Uso.Alimentos;
 import Clases_De_Uso.Electrodomestico;
 import Clases_De_Uso.Ropa;
 import Clases_De_Uso.Super_Clase;
+import Menus_Productos.Interno;
 import java.util.ArrayList;
+import javax.swing.JDesktopPane;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -16,16 +21,19 @@ import javax.swing.table.DefaultTableModel;
  */
 //Nombre: Daniel Miranda Alejandro - DNI: 45800784.
 public class TPO5_Ejercicio extends javax.swing.JFrame {
-    ArrayList<Super_Clase> Prod = new ArrayList();
+    private static ArrayList<Super_Clase> Prod = new ArrayList();
     DefaultTableModel Prueba = new DefaultTableModel();
+    Interno Intern1 = new Interno();
+    
     /**
      * Creates new form TPO5_Ejercicio
      */
     public TPO5_Ejercicio() {
         initComponents();
-        String[] cl = {"Producto","Categoria","Precio"};
-        Prueba.setColumnIdentifiers(cl);
+        String[] Cl = {"Producto","Categoria","Precio"};
+        Prueba.setColumnIdentifiers(Cl);
         Productos.setModel(Prueba);
+        
     }
 
     /**
@@ -44,7 +52,7 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
         Evento = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SuperMayorista");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
@@ -58,13 +66,10 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
         Productos.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         Productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Producto", "Categoria", "Precio"
+                "Item_1", "Item_2", "Item_3"
             }
         ) {
             Class[] types = new Class [] {
@@ -83,8 +88,6 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
             }
         });
         Productos.setShowGrid(true);
-        Productos.setShowHorizontalLines(true);
-        Productos.setShowVerticalLines(true);
         jScrollPane1.setViewportView(Productos);
         if (Productos.getColumnModel().getColumnCount() > 0) {
             Productos.getColumnModel().getColumn(0).setResizable(false);
@@ -140,20 +143,9 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EventoMouseClicked
-        String Valor=(String)PE.getSelectedItem();
-        switch(Valor){
-            case ("Electrodomesticos"):
-                
-                Prueba.addRow(new Object[]{"","Electrodomestico",0.0});
-                
-                break;
-            case ("Alimentos"):
-                Alimentos ali = new Alimentos("","Alimento",0.0);
-                break;
-            case ("Ropa"):
-                Ropa ropa = new Ropa("","Ropa",0.0);
-                break;
-        }
+        
+        
+        
     }//GEN-LAST:event_EventoMouseClicked
 
     /**
@@ -190,7 +182,9 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
             }
         });
     }
-
+    private void Llamar(){
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Evento;
     private javax.swing.JComboBox<String> PE;

@@ -18,5 +18,17 @@ public class Super_Clase {
         this.Categoria = Categoria;
         this.Precio = Precio;
     }
+
+    public String getNombre_Producto() {
+        return Nombre_Producto;
+    }
+
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public double getPrecio() {
+        return Precio;
+    }
     
 }
