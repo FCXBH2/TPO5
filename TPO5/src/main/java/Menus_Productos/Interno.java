@@ -122,20 +122,24 @@ public class Interno extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAgregarActionPerformed
+        
         switch((String) JCombo.getSelectedItem()){
             case ("Alimentos"):
                     Super_Clase ali = new Alimentos(JNombre.getText(),(String)JCombo.getSelectedItem(),Double.valueOf(JPrecio.getText()));
                     TPO5_Ejercicio.getProd().add(ali);
+                    TPO5_Ejercicio.getComestibles().add((Alimentos) ali);
                     JOptionPane.showMessageDialog(this, "Se ha agregado un Producto.");
                     break;
             case ("Electrodomesticos"):
                     Super_Clase ale = new Electrodomestico(JNombre.getText(),(String)JCombo.getSelectedItem(),Double.valueOf(JPrecio.getText()));
                     TPO5_Ejercicio.getProd().add(ale);
+                    TPO5_Ejercicio.getElectro().add((Electrodomestico) ale);
                     JOptionPane.showMessageDialog(this, "Se ha agregado un Producto.");
                     break;
             case ("Ropa"):
                     Super_Clase ala = new Ropa(JNombre.getText(),(String)JCombo.getSelectedItem(),Double.valueOf(JPrecio.getText()));
                     TPO5_Ejercicio.getProd().add(ala);
+                    TPO5_Ejercicio.getRopita().add((Ropa)ala);
                     JOptionPane.showMessageDialog(this, "Se ha agregado un Producto.");
                     break;
         }

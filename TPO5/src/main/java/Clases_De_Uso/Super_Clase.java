@@ -30,5 +30,10 @@ public class Super_Clase {
     public double getPrecio() {
         return Precio;
     }
+
+    @Override
+    public String toString() {
+        return "Super_Clase: " + "Nombre_Producto: " + Nombre_Producto + ", Categoria: " + Categoria + ", Precio: " + Precio + ".";
+    }
     
 }

@@ -18,9 +18,7 @@ import javax.swing.table.DefaultTableModel;
 //Nombre: Daniel Miranda Alejandro - DNI: 45800784.
 public class TPO5_Ejercicio extends javax.swing.JFrame {
     private static ArrayList<Super_Clase> Prod = new ArrayList();
-    private ArrayList<Ropa> Ropita = new ArrayList();
-    private ArrayList<Alimentos> comestibles = new ArrayList();
-    private ArrayList<Electrodomestico> electro = new ArrayList();
+    private static ArrayList<Ropa> Ropita = new ArrayList(); private static ArrayList<Alimentos> comestibles = new ArrayList(); private static ArrayList<Electrodomestico> electro = new ArrayList();
     DefaultTableModel Prueba = new DefaultTableModel();
     Interno Intern1 = new Interno(this,true);
     
@@ -49,7 +47,7 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
         Productos = new javax.swing.JTable();
         Evento = new javax.swing.JButton();
         JActualizar = new javax.swing.JButton();
-        JActualizar1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SuperMayorista");
@@ -62,11 +60,6 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
         Combito.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
         Combito.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentos", "Electrodomesticos", "Ropa" }));
         Combito.setBorder(new javax.swing.border.MatteBorder(null));
-        Combito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CombitoActionPerformed(evt);
-            }
-        });
 
         Productos.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
         Productos.setModel(new javax.swing.table.DefaultTableModel(
@@ -92,8 +85,11 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Productos.setColumnSelectionAllowed(true);
         Productos.setShowGrid(true);
+        Productos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(Productos);
+        Productos.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (Productos.getColumnModel().getColumnCount() > 0) {
             Productos.getColumnModel().getColumn(0).setResizable(false);
             Productos.getColumnModel().getColumn(1).setResizable(false);
@@ -118,23 +114,26 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
             }
         });
 
-        JActualizar1.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
-        JActualizar1.setText("Remover");
-        JActualizar1.setBorder(new javax.swing.border.MatteBorder(null));
+        jComboBox1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Precio", "Remover" }));
+        jComboBox1.setToolTipText("Otro Menu");
+        jComboBox1.setBorder(new javax.swing.border.MatteBorder(null));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .addComponent(Evento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Combito, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Combito, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,8 +143,8 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Combito, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                    .addComponent(JActualizar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(JActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -172,60 +171,36 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_EventoMouseClicked
 
     private void JActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JActualizarActionPerformed
-        
-        Ropita.removeAll(Ropita);
-        comestibles.removeAll(comestibles);
-        electro.removeAll(electro);
-        for(Super_Clase SNK:Prod){
-            if(SNK instanceof Ropa){
-                Ropita.add((Ropa)SNK);
-            }
-            if(SNK instanceof Alimentos){
-                comestibles.add((Alimentos)SNK);
-            }
-            if(SNK instanceof Electrodomestico){
-                electro.add((Electrodomestico)SNK);
-            }
+        for(int i=0;i<Prueba.getRowCount();){
+            Prueba.removeRow(i);
+        }
+        switch((String) Combito.getSelectedItem()){
+            case ("Ropa"):
+                
+                
+                for(Ropa R1: Ropita){
+                    Prueba.addRow(new Object[]{R1.getNombre_Producto(),R1.getCategoria(),R1.getPrecio()});
+                }
+                Productos.setModel(Prueba);
+                break;
+            case ("Alimentos"):
+                
+                for(Alimentos A1: comestibles){
+                    Prueba.addRow(new Object[]{A1.getNombre_Producto(),A1.getCategoria(),A1.getPrecio()});
+                }
+                Productos.setModel(Prueba);
+                break;
+            case ("Electrodomesticos"):
+                
+                for(Electrodomestico E1: electro){
+                    Prueba.addRow(new Object[]{E1.getNombre_Producto(),E1.getCategoria(),E1.getPrecio()});
+                }
+                Productos.setModel(Prueba);
+                break;
         }
         
     }//GEN-LAST:event_JActualizarActionPerformed
-
-    private void CombitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CombitoActionPerformed
-        
-        for(int i=0;i<Prueba.getRowCount();i++){
-                    Prueba.removeRow(i);
-                    
-                }
-        if(Combito.getSelectedItem().equals("Alimentos")){
-            for(int i=0;i<Prueba.getRowCount();i++){
-                    Prueba.removeRow(i);
-                    
-                }
-            for(Alimentos C1:comestibles){
-                    Prueba.addRow(new Object[]{C1.getNombre_Producto(),C1.getCategoria(),C1.getPrecio()});
-                }
-        }
-        if(Combito.getSelectedItem().equals("Electrodomesticos")){
-            for(int i=0;i<Prueba.getRowCount();i++){
-                    Prueba.removeRow(i);
-                    
-                }
-            for(Electrodomestico C1:electro){
-                    Prueba.addRow(new Object[]{C1.getNombre_Producto(),C1.getCategoria(),C1.getPrecio()});
-                }
-        }
-        if(Combito.getSelectedItem().equals("Ropa")){
-            for(int i=0;i<Prueba.getRowCount();i++){
-                    Prueba.removeRow(i);
-                    
-                }
-            for(Ropa C1:Ropita){
-                    Prueba.addRow(new Object[]{C1.getNombre_Producto(),C1.getCategoria(),C1.getPrecio()});
-                }
-        }
-        Productos.setModel(Prueba);
-    }//GEN-LAST:event_CombitoActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -264,13 +239,25 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     public static ArrayList<Super_Clase> getProd() {
         return Prod;
     }
+
+    public static ArrayList<Ropa> getRopita() {
+        return Ropita;
+    }
+
+    public static ArrayList<Alimentos> getComestibles() {
+        return comestibles;
+    }
+
+    public static ArrayList<Electrodomestico> getElectro() {
+        return electro;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combito;
     private javax.swing.JButton Evento;
     private javax.swing.JButton JActualizar;
-    private javax.swing.JButton JActualizar1;
     private javax.swing.JTable Productos;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
