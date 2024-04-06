@@ -6,10 +6,13 @@ package com.mycompany.tpo5;
 
 import Clases_De_Uso.Alimentos;
 import Clases_De_Uso.Electrodomestico;
+import Clases_De_Uso.OrdenN;
+import Clases_De_Uso.OrdenP;
 import Clases_De_Uso.Ropa;
 import Clases_De_Uso.Super_Clase;
 import Menus_Productos.Interno;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -47,7 +50,8 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
         Productos = new javax.swing.JTable();
         Evento = new javax.swing.JButton();
         JActualizar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Orden = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SuperMayorista");
@@ -114,10 +118,20 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Precio", "Remover" }));
-        jComboBox1.setToolTipText("Otro Menu");
-        jComboBox1.setBorder(new javax.swing.border.MatteBorder(null));
+        Orden.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        Orden.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Precio", "Remover" }));
+        Orden.setToolTipText("Otro Menu");
+        Orden.setBorder(new javax.swing.border.MatteBorder(null));
+        Orden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrdenActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        jButton1.setText("Ordenar por:");
+        jButton1.setBorder(new javax.swing.border.MatteBorder(null));
+        jButton1.setFocusable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,15 +140,15 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
             .addComponent(Evento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Combito, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
+                .addComponent(Combito, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Orden, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,8 +157,9 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Combito, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                    .addComponent(Orden)
                     .addComponent(JActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -200,6 +215,37 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_JActualizarActionPerformed
+
+    private void OrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrdenActionPerformed
+        switch((String)Orden.getSelectedItem()){
+            case ("Nombre"):
+                switch ((String) Combito.getSelectedItem()){
+                    case ("Alimentos"):
+                        Collections.sort(comestibles, new OrdenN());
+                        break;
+                    case ("Electrodomesticos"):
+                        Collections.sort(electro, new OrdenN());
+                        break;
+                    case ("Ropa"):
+                        Collections.sort(Ropita, new OrdenN());
+                        break;
+                }
+                break;
+            case ("Precio"):
+                switch ((String) Combito.getSelectedItem()){
+                    case ("Alimentos"):
+                        Collections.sort(comestibles, new OrdenP());
+                        break;
+                    case ("Electrodomesticos"):
+                        Collections.sort(electro, new OrdenP());
+                        break;
+                    case ("Ropa"):
+                        Collections.sort(Ropita, new OrdenP());
+                        break;
+                }
+                break;
+        }
+    }//GEN-LAST:event_OrdenActionPerformed
     
     /**
      * @param args the command line arguments
@@ -256,8 +302,9 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Combito;
     private javax.swing.JButton Evento;
     private javax.swing.JButton JActualizar;
+    private javax.swing.JComboBox<String> Orden;
     private javax.swing.JTable Productos;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
