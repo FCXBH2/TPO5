@@ -51,7 +51,7 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
         Evento = new javax.swing.JButton();
         JActualizar = new javax.swing.JButton();
         Orden = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        Boton_SinUso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SuperMayorista");
@@ -128,10 +128,10 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
-        jButton1.setText("Ordenar por:");
-        jButton1.setBorder(new javax.swing.border.MatteBorder(null));
-        jButton1.setFocusable(false);
+        Boton_SinUso.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        Boton_SinUso.setText("Ordenar por:");
+        Boton_SinUso.setBorder(new javax.swing.border.MatteBorder(null));
+        Boton_SinUso.setFocusable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,7 +144,7 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Boton_SinUso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Orden, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -159,7 +159,7 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
                     .addComponent(Combito, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                     .addComponent(Orden)
                     .addComponent(JActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Boton_SinUso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -186,6 +186,7 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_EventoMouseClicked
 
     private void JActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JActualizarActionPerformed
+        //Hay muchas formas de hacerlo, yo solo utilice esta para jugar un poco con los metodos y herencias.
         for(int i=0;i<Prueba.getRowCount();){
             Prueba.removeRow(i);
         }
@@ -217,6 +218,7 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     }//GEN-LAST:event_JActualizarActionPerformed
 
     private void OrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrdenActionPerformed
+        //Para ordenar los productos. lo unico que hay que hacer es seleccionar el item que se quiera ordenar, no hace falta apretar el boton sin uso
         switch((String)Orden.getSelectedItem()){
             case ("Nombre"):
                 switch ((String) Combito.getSelectedItem()){
@@ -299,12 +301,12 @@ public class TPO5_Ejercicio extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Boton_SinUso;
     private javax.swing.JComboBox<String> Combito;
     private javax.swing.JButton Evento;
     private javax.swing.JButton JActualizar;
     private javax.swing.JComboBox<String> Orden;
     private javax.swing.JTable Productos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
