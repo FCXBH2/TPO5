@@ -1,21 +1,27 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package Menus_Productos;
 
-import javax.swing.JTextField;
+import Clases_De_Uso.Alimentos;
+import Clases_De_Uso.Electrodomestico;
+import Clases_De_Uso.Ropa;
+import Clases_De_Uso.Super_Clase;
+import com.mycompany.tpo5.TPO5_Ejercicio;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author DANIELALEJANDROMIRAN
  */
-public class Interno extends javax.swing.JInternalFrame {
+public class Interno extends javax.swing.JDialog {
 
     /**
      * Creates new form Interno
      */
-    public Interno() {
+    public Interno(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -29,17 +35,17 @@ public class Interno extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         JAgregar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         JNombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         JPrecio = new javax.swing.JTextField();
-        JCategoria = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        JCombo = new javax.swing.JComboBox<>();
 
-        setClosable(true);
-        setMaximumSize(new java.awt.Dimension(471, 403));
-        setMinimumSize(new java.awt.Dimension(471, 403));
-        setVisible(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         JAgregar.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
-        JAgregar.setText("Agregar");
+        JAgregar.setText("Agregar Producto");
         JAgregar.setBorder(new javax.swing.border.MatteBorder(null));
         JAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,55 +53,144 @@ public class Interno extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Nombre del Producto");
+        jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
+
+        JNombre.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
+        JNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JNombre.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jLabel2.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Precio del Producto");
+        jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
+
+        JPrecio.setFont(new java.awt.Font("DialogInput", 0, 14)); // NOI18N
+        JPrecio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JPrecio.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jLabel3.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Categoria");
+        jLabel3.setBorder(new javax.swing.border.MatteBorder(null));
+
+        JCombo.setFont(new java.awt.Font("DialogInput", 0, 18)); // NOI18N
+        JCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentos", "Electrodomesticos", "Ropa" }));
+        JCombo.setBorder(new javax.swing.border.MatteBorder(null));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(JAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(215, 215, 215)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(184, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addComponent(JCombo, 0, 0, Short.MAX_VALUE)
+                    .addComponent(JNombre))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(JNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(JAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(JNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                .addComponent(JAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void JAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAgregarActionPerformed
-        // TODO add your handling code here:
+        switch((String) JCombo.getSelectedItem()){
+            case ("Alimentos"):
+                    Super_Clase ali = new Alimentos(JNombre.getText(),(String)JCombo.getSelectedItem(),Double.valueOf(JPrecio.getText()));
+                    TPO5_Ejercicio.getProd().add(ali);
+                    JOptionPane.showMessageDialog(this, "Se ha agregado un Producto.");
+                    break;
+            case ("Electrodomesticos"):
+                    Super_Clase ale = new Electrodomestico(JNombre.getText(),(String)JCombo.getSelectedItem(),Double.valueOf(JPrecio.getText()));
+                    TPO5_Ejercicio.getProd().add(ale);
+                    JOptionPane.showMessageDialog(this, "Se ha agregado un Producto.");
+                    break;
+            case ("Ropa"):
+                    Super_Clase ala = new Ropa(JNombre.getText(),(String)JCombo.getSelectedItem(),Double.valueOf(JPrecio.getText()));
+                    TPO5_Ejercicio.getProd().add(ala);
+                    JOptionPane.showMessageDialog(this, "Se ha agregado un Producto.");
+                    break;
+        }
+        
     }//GEN-LAST:event_JAgregarActionPerformed
 
-    public JTextField getJCategoria() {
-        return JCategoria;
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Interno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Interno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Interno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Interno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                Interno dialog = new Interno(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
 
-    public JTextField getJNombre() {
-        return JNombre;
-    }
-
-    public JTextField getJPrecio() {
-        return JPrecio;
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JAgregar;
-    private javax.swing.JTextField JCategoria;
+    private javax.swing.JComboBox<String> JCombo;
     private javax.swing.JTextField JNombre;
     private javax.swing.JTextField JPrecio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
