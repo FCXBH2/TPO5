@@ -20,8 +20,8 @@ import javax.swing.table.DefaultTableModel;
  */
 //Nombre: Daniel Miranda Alejandro - DNI: 45800784.
 public class TPO5_Ejercicio extends javax.swing.JFrame {
-    private static ArrayList<Super_Clase> Prod = new ArrayList();
-    private static ArrayList<Ropa> Ropita = new ArrayList(); private static ArrayList<Alimentos> comestibles = new ArrayList(); private static ArrayList<Electrodomestico> electro = new ArrayList();
+    private static final ArrayList<Super_Clase> Prod = new ArrayList();
+    private static final ArrayList<Ropa> Ropita = new ArrayList(); private static final ArrayList<Alimentos> comestibles = new ArrayList(); private static final ArrayList<Electrodomestico> electro = new ArrayList();
     DefaultTableModel Prueba = new DefaultTableModel();
     Interno Intern1 = new Interno(this,true);
     
